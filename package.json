@@ -1,0 +1,36 @@
+{
+  "name": "info-store",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "vite --host & sleep 1 && electron .",
+    "electron:build": "vite build && electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^42.1.0",
+    "electron-builder": "^26.8.1",
+    "vite": "^8.0.12"
+  },
+  "dependencies": {
+    "dexie": "^4.4.2"
+  },
+  "build": {
+    "appId": "com.infostore.manager",
+    "productName": "Info Store",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

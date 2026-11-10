@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 width=%22100%22 height=%22100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%236366f1%22/><text y=%2270%22 x=%2210%22 font-size=%2270%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22white%22>IS</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info Store Manager</title>
+  </head>
+  <body>
+    <!-- Background Wrapper with Glowing Orbs -->
+    <div class="background-wrapper">
+      <div class="glow-orb glow-orb-1"></div>
+      <div class="glow-orb glow-orb-2"></div>
+      <div class="glow-orb glow-orb-3"></div>
+    </div>
+
+    <!-- Application Container -->
+    <div class="app-container">
+      
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/><path d="M20 9h3"/><path d="M20 15h3"/><path d="M1 9h3"/><path d="M1 15h3"/></svg>
+          </div>
+          <span class="logo-text" id="store-title-logo">Info Store</span>
+        </div>
+
+        <nav class="sidebar-menu">
+          <a class="menu-link active" data-view="dashboard" id="nav-dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="10" rx="1"/><rect width="7" height="5" x="3" y="14" rx="1"/></svg>
+            <span data-i18n="nav_dashboard">Tableau de Bord</span>
+          </a>
+          <a class="menu-link" data-view="pos" id="nav-pos">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            <span data-i18n="nav_pos">Nouvelle Vente</span>
+          </a>
+          <a class="menu-link" data-view="products" id="nav-products">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span data-i18n="nav_products">Produits</span>
+          </a>
+          <a class="menu-link" data-view="clients" id="nav-clients">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span data-i18n="nav_clients">Clients</span>
+          </a>
+          <a class="menu-link" data-view="stock" id="nav-stock">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6v6H4zm10 0h6v6h-6zM4 4h6v6H4zm10 0h6v6h-6z"/></svg>
+            <span data-i18n="nav_stock">Mouvements Stock</span>
+          </a>
+          <a class="menu-link" data-view="history" id="nav-history">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+            <span data-i18n="nav_history">Historique Factures</span>
+          </a>
+          <a class="menu-link" data-view="casa" id="nav-casa">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="nav_casa">Rapports Caisse</span>
+          </a>
+          <a class="menu-link" data-view="settings" id="nav-settings">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span data-i18n="nav_settings">Paramètres</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-caisse-badge">
+            <span class="s-caisse-title" data-i18n="s_caisse_title">Fond de Caisse</span>
+            <span class="s-caisse-val" id="sidebar-caisse-val">0.000 TND</span>
+          </div>
+          <div style="text-align: center; margin-top: 15px; font-family: monospace; font-size: 0.75rem; letter-spacing: 3px; color: rgba(255,255,255,0.4); text-transform: uppercase; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px;">
+            GORTECH
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        
+        <!-- Header -->
+        <header class="top-header">
+          <div class="page-title-area">
+            <h1 class="page-title" id="main-page-title" data-i18n="nav_dashboard">Tableau de Bord</h1>
+            <span class="page-subtitle" id="main-page-subtitle" data-i18n="dash_tagline">Système de gestion et facturation moderne</span>
+          </div>
+          <div class="header-actions">
+            <!-- Language Toggle Button -->
+            <button class="lang-toggle" id="lang-toggle-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              <span id="lang-label">العربية</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- View Container -->
+        <div class="view-container">
+
+          <!-- 1. DASHBOARD VIEW -->
+          <section id="view-dashboard" class="view-section active">
+            <!-- Stats -->
+            <div class="grid-stats">
+              <div class="glass-card stat-card">
+                <div class="stat-info">
+                  <span class="stat-label" data-i18n="dash_total_sales">Ventes du Jour</span>
+                  <span class="stat-value success" id="dash-sales-value">0.000 TND</span>
+                </div>
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                </div>
+              </div>
+
+              <div class="glass-card stat-card">
+                <div class="stat-info">
+                  <span class="stat-label" data-i18n="dash_caisse_total">Solde Caisse Actuel</span>
+                  <span class="stat-value primary" id="dash-caisse-value">0.000 TND</span>
+                </div>
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+              </div>
+
+              <div class="glass-card stat-card">
+                <div class="stat-info">
+                  <span class="stat-label" data-i18n="dash_stock_alerts">Alertes Stock Bas</span>
+                  <span class="stat-value danger" id="dash-stock-value">0</span>
+                </div>
+                <div class="stat-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dashboard Columns -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+              
+              <!-- Recent Transactions -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;" data-i18n="dash_recent_sales">Ventes Récentes</h3>
+                <div class="table-container" style="margin-top: 0;">
+                  <table class="glass-table">
+                    <thead>
+                      <tr>
+                        <th data-i18n="hist_invoice_no">N° Facture</th>
+                        <th data-i18n="hist_client">Client</th>
+                        <th data-i18n="hist_date">Date</th>
+                        <th data-i18n="hist_total">Total TTC</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dash-recent-sales-list">
+                      <!-- Dynamically added -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Stock Alert Widget -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; color: var(--accent-pink);" data-i18n="dash_stock_alerts">Alertes Stock Bas</h3>
+                <div id="dash-stock-alert-list" style="display: flex; flex-direction: column; gap: 12px;">
+                  <!-- Dynamically populated or 'No Alert' message -->
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- 2. POS / FACTURATION VIEW -->
+          <section id="view-pos" class="view-section">
+            <div class="pos-layout">
+              <!-- Catalogs -->
+              <div style="display: flex; flex-direction: column; gap: 24px;">
+                <!-- Client select -->
+                <div class="glass-card">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3 style="font-size: 1rem; font-weight: 700;" data-i18n="pos_select_client">1. Sélectionner le Client</h3>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" id="pos-add-client-btn" data-i18n="client_add">+ Client</button>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" class="glass-input" id="pos-client-search" data-i18n="[placeholder]pos_client_search_placeholder" placeholder="Rechercher client (Nom, Tél, CIN)...">
+                    <select class="glass-select" id="pos-client-select">
+                      <!-- Populated via JS -->
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Products select -->
+                <div class="glass-card">
+                  <h3 style="font-size: 1rem; margin-bottom: 16px; font-weight: 700;" data-i18n="pos_select_prod">2. Ajouter des Produits</h3>
+                  <div style="margin-bottom: 16px;">
+                    <input type="text" class="glass-input" id="pos-product-search" data-i18n="[placeholder]prod_search_placeholder" placeholder="Rechercher un produit...">
+                  </div>
+                  <div class="table-container" style="max-height: 300px; overflow-y: auto; margin-top: 0;">
+                    <table class="glass-table">
+                      <thead>
+                        <tr>
+                          <th data-i18n="prod_name">Produit</th>
+                          <th data-i18n="prod_sn">S/N</th>
+                          <th data-i18n="stock_current">Stock</th>
+                          <th data-i18n="prod_price_sale">Prix (HT)</th>
+                          <th data-i18n="hist_actions">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="pos-products-list">
+                        <!-- Populated via JS -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cart Summary -->
+              <div class="glass-card" style="position: sticky; top: 100px;">
+                <h3 style="font-size: 1.1rem; margin-bottom: 16px; font-weight: 700; border-bottom: 1px solid var(--glass-border); padding-bottom: 12px;" data-i18n="pos_cart">Panier d'Achat</h3>
+                
+                <div class="cart-items-list" id="pos-cart-items">
+                  <!-- Dynamic items -->
+                  <div style="text-align: center; color: var(--text-muted); padding: 40px 0;" data-i18n="pos_empty_cart">Le panier est vide.</div>
+                </div>
+
+                <div class="cart-totals">
+                  <div class="total-row">
+                    <span data-i18n="pos_subtotal">Sous-total HT</span>
+                    <span id="pos-total-ht">0.000 TND</span>
+                  </div>
+                  <div class="total-row">
+                    <span data-i18n="pos_total_tva">Total TVA</span>
+                    <span id="pos-total-tva">0.000 TND</span>
+                  </div>
+                  <div class="total-row">
+                    <span data-i18n="pos_stamp">Timbre Fiscal</span>
+                    <span id="pos-stamp-val">1.000 TND</span>
+                  </div>
+                  <div class="total-row grand-total">
+                    <span data-i18n="pos_total_ttc">Total TTC</span>
+                    <span id="pos-total-ttc">0.000 TND</span>
+                  </div>
+                </div>
+
+                <button class="btn btn-success" style="width: 100%; margin-top: 24px; font-size: 1rem; padding: 14px;" id="pos-checkout-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                  <span data-i18n="pos_btn_validate">Valider & Imprimer la Facture</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. PRODUCTS VIEW -->
+          <section id="view-products" class="view-section">
+            <div class="glass-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 16px; flex-wrap: wrap;">
+                <input type="text" class="glass-input" id="products-search" style="max-width: 320px;" data-i18n="[placeholder]prod_search_placeholder" placeholder="Rechercher un produit...">
+                <button class="btn btn-primary" id="add-product-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+                  <span data-i18n="prod_add">Ajouter un Produit</span>
+                </button>
+              </div>
+
+              <div class="table-container">
+                <table class="glass-table">
+                  <thead>
+                    <tr>
+                      <th data-i18n="prod_name">Produit</th>
+                      <th data-i18n="prod_brand">Marque</th>
+                      <th data-i18n="prod_sn">S/N</th>
+                      <th data-i18n="prod_price_factory">Prix Achat</th>
+                      <th data-i18n="prod_price_sale">Prix Vente</th>
+                      <th data-i18n="prod_tva">TVA</th>
+                      <th data-i18n="stock_current">Stock</th>
+                      <th data-i18n="hist_actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="products-list-table">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. CLIENTS VIEW -->
+          <section id="view-clients" class="view-section">
+            <div class="glass-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 16px; flex-wrap: wrap;">
+                <input type="text" class="glass-input" id="clients-search" style="max-width: 320px;" data-i18n="[placeholder]client_search_placeholder" placeholder="Rechercher un client...">
+                <button class="btn btn-primary" id="add-client-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+                  <span data-i18n="client_add">Ajouter un Client</span>
+                </button>
+              </div>
+
+              <div class="table-container">
+                <table class="glass-table">
+                  <thead>
+                    <tr>
+                      <th data-i18n="client_surname">Prénom</th>
+                      <th data-i18n="client_name">Nom</th>
+                      <th data-i18n="client_cin">N° CIN</th>
+                      <th data-i18n="client_phone">Téléphone</th>
+                      <th data-i18n="hist_actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="clients-list-table">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. STOCK VIEW -->
+          <section id="view-stock" class="view-section">
+            <div style="display: grid; grid-template-columns: 350px 1fr; gap: 24px; align-items: start;">
+              
+              <!-- Add Stock Entry -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;" data-i18n="stock_add">Alimenter le Stock</h3>
+                
+                <form id="stock-form" style="display: flex; flex-direction: column; gap: 16px;">
+                  <div class="form-group">
+                    <label for="stock-product-select" data-i18n="stock_select_product">Sélectionner un Produit</label>
+                    <select class="glass-select" id="stock-product-select" required>
+                      <!-- Populated via JS -->
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="stock-qty-input" data-i18n="stock_qty">Quantité</label>
+                    <input type="number" class="glass-input" id="stock-qty-input" min="1" value="1" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="stock-type-select" data-i18n="stock_type">Type de Mouvement</label>
+                    <select class="glass-select" id="stock-type-select" required>
+                      <option value="in" data-i18n="stock_type_in">Entrée (Réapprovisionnement)</option>
+                      <option value="adjust" data-i18n="stock_type_adjust">Ajustement Manuel</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="stock-desc-input" data-i18n="casa_reason">Raison / Description</label>
+                    <input type="text" class="glass-input" id="stock-desc-input" placeholder="Ex: Livraison fournisseur A">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="margin-top: 10px;" data-i18n="g_save">Enregistrer</button>
+                </form>
+              </div>
+
+              <!-- Stock logs -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;" data-i18n="stock_history">Historique des Mouvements</h3>
+                
+                <div class="table-container" style="margin-top: 0; max-height: 500px; overflow-y: auto;">
+                  <table class="glass-table">
+                    <thead>
+                      <tr>
+                        <th data-i18n="hist_date">Date</th>
+                        <th data-i18n="prod_name">Produit</th>
+                        <th data-i18n="stock_qty">Quantité</th>
+                        <th data-i18n="stock_type">Type</th>
+                        <th data-i18n="casa_reason">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody id="stock-movements-table">
+                      <!-- Dynamic -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- 6. HISTORY VIEW -->
+          <section id="view-history" class="view-section">
+            <div class="glass-card">
+              <div class="table-container" style="margin-top: 0;">
+                <table class="glass-table">
+                  <thead>
+                    <tr>
+                      <th data-i18n="hist_invoice_no">N° Facture</th>
+                      <th data-i18n="hist_client">Client</th>
+                      <th data-i18n="hist_date">Date</th>
+                      <th data-i18n="pos_subtotal">Sous-total HT</th>
+                      <th data-i18n="pos_total_tva">TVA</th>
+                      <th data-i18n="hist_total">Total TTC</th>
+                      <th data-i18n="hist_actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="invoices-list-table">
+                    <!-- Dynamic -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. CASA / CAISSE VIEW -->
+          <section id="view-casa" class="view-section">
+            
+            <!-- Quick stats of Casa -->
+            <div class="grid-stats">
+              <div class="glass-card stat-card" style="border-color: rgba(16, 185, 129, 0.3);">
+                <div class="stat-info">
+                  <span class="stat-label" data-i18n="casa_current_cash">Argent Réel en Caisse</span>
+                  <span class="stat-value success" id="casa-current-balance">0.000 TND</span>
+                </div>
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+              </div>
+
+              <div class="glass-card stat-card">
+                <div class="stat-info">
+                  <span class="stat-label" data-i18n="casa_total_in">Total Entrées</span>
+                  <span class="stat-value primary" id="casa-total-inputs">0.000 TND</span>
+                </div>
+                <div class="stat-icon" style="color: var(--primary);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </div>
+              </div>
+
+              <div class="glass-card stat-card">
+                <div class="stat-info">
+                  <span class="stat-label" data-i18n="casa_total_out">Total Sorties</span>
+                  <span class="stat-value danger" id="casa-total-outputs">0.000 TND</span>
+                </div>
+                <div class="stat-icon" style="color: var(--danger);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operations and Report -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-bottom: 24px;">
+              <!-- Add Manual Flow -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;" data-i18n="casa_add_trans">Enregistrer une Opération de Caisse</h3>
+                
+                <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                  <button class="btn btn-success" style="flex: 1;" id="casa-cash-in-btn">
+                    <span data-i18n="casa_cash_in">Entrée Caisse (+)</span>
+                  </button>
+                  <button class="btn btn-danger" style="flex: 1;" id="casa-cash-out-btn">
+                    <span data-i18n="casa_cash_out">Sortie Caisse (-)</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Report Filter -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 16px; font-weight: 700;" data-i18n="casa_report_prof">Rapport de Caisse Professionnel</h3>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button class="btn btn-secondary active" id="btn-rep-day" data-i18n="casa_rep_day">Rapport Journalier</button>
+                  <button class="btn btn-secondary" id="btn-rep-week" data-i18n="casa_rep_week">Rapport Hebdomadaire</button>
+                  <button class="btn btn-secondary" id="btn-rep-month" data-i18n="casa_rep_month">Rapport Mensuel</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Full Caisse Logs -->
+            <div class="glass-card">
+              <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;" data-i18n="casa_title">Rapports de Caisse</h3>
+              
+              <div class="table-container" style="margin-top: 0; max-height: 400px; overflow-y: auto;">
+                <table class="glass-table">
+                  <thead>
+                    <tr>
+                      <th data-i18n="hist_date">Date</th>
+                      <th data-i18n="casa_amount">Montant</th>
+                      <th data-i18n="stock_type">Type</th>
+                      <th data-i18n="casa_reason">Raison / Description</th>
+                      <th data-i18n="casa_ending_cash">Solde Caisse après opération</th>
+                    </tr>
+                  </thead>
+                  <tbody id="casa-movements-table">
+                    <!-- Dynamic -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- 8. SETTINGS VIEW -->
+          <section id="view-settings" class="view-section">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start;">
+              
+              <div style="display: flex; flex-direction: column; gap: 24px;">
+                <!-- Boutique Information & Taxes -->
+                <div class="glass-card" style="display: flex; flex-direction: column; gap: 24px;">
+                  <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;" data-i18n="set_boutique_info">Informations Boutique</h3>
+                    
+                    <form id="settings-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label for="set-name-input" data-i18n="set_name">Nom de la boutique</label>
+                        <input type="text" class="glass-input" id="set-name-input" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="set-phone-input" data-i18n="set_phone">Numéro de téléphone</label>
+                        <input type="text" class="glass-input" id="set-phone-input" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="set-address-input" data-i18n="set_address">Adresse complète</label>
+                      <input type="text" class="glass-input" id="set-address-input" required>
+                    </div>
+
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label for="set-tva-input" data-i18n="set_tva_title">Gestion des Taux de TVA (%)</label>
+                        <input type="text" class="glass-input" id="set-tva-input" required>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="set_tva_help">Séparez les taux par des virgules (ex: 7, 19)</span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="set-stamp-input" data-i18n="pos_stamp">Timbre Fiscal (TND)</label>
+                        <input type="number" step="0.100" class="glass-input" id="set-stamp-input" required>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;" data-i18n="set_save_btn">Enregistrer les Paramètres</button>
+                  </form>
+                </div>
+
+                <!-- Alimentation de Caisse -->
+                <div class="glass-card">
+                  <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Alimenter la Caisse (Initialisation)</h3>
+                  <form id="settings-add-cash-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label for="set-cash-amount">Montant à Ajouter (TND)</label>
+                        <input type="number" min="1" step="1" class="glass-input" id="set-cash-amount" placeholder="Ex: 500" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="set-cash-desc">Description / Motif</label>
+                        <input type="text" class="glass-input" id="set-cash-desc" placeholder="Ex: Apport de fonds, Initialisation de caisse..." required>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Alimenter la Caisse</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Gestion des Marques -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;" data-i18n="set_brands_mgmt">Gestion des Marques</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                  <!-- Add Brand Form -->
+                  <form id="brand-settings-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="form-group">
+                      <label for="brand-name-input" data-i18n="brand_name">Nom de la Marque</label>
+                      <input type="text" class="glass-input" id="brand-name-input" required>
+                    </div>
+                    <div class="form-group">
+                      <label data-i18n="brand_logo">Logo de la Marque</label>
+                      <div style="display: flex; align-items: center; gap: 12px;">
+                        <label class="btn btn-secondary" style="cursor: pointer; padding: 8px 12px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                          <span data-i18n="prod_pic_upload" style="margin-left: 6px;">Choisir Image</span>
+                          <input type="file" id="brand-logo-input" style="display: none;" accept="image/*">
+                        </label>
+                        <button type="button" class="btn btn-danger btn-icon-only" id="brand-logo-remove-btn" style="display: none;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+                        </button>
+                      </div>
+                      <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                        <div id="brand-logo-placeholder-icon" style="width: 48px; height: 48px; border-radius: 8px; border: 1px dashed var(--glass-border); display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.02);">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                        </div>
+                        <img id="brand-logo-preview-img" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover; border: 1px solid var(--glass-border); display: none;">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;" data-i18n="brand_add_btn">Ajouter la Marque</button>
+                  </form>
+                  
+                  <!-- Brands List Container -->
+                  <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="max-height: 200px; overflow-y: auto; border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; background: rgba(255,255,255,0.01);">
+                      <div id="settings-brands-list" style="display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Rempli dynamiquement -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gestion des Fournisseurs -->
+              <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;" data-i18n="set_suppliers_mgmt">Gestion des Fournisseurs</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                  <!-- Add Supplier Form -->
+                  <form id="supplier-settings-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="form-group">
+                      <label for="supplier-name-input" data-i18n="supplier_name">Nom du Fournisseur</label>
+                      <input type="text" class="glass-input" id="supplier-name-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;" data-i18n="supplier_add_btn">Ajouter le Fournisseur</button>
+                  </form>
+                  
+                  <!-- Suppliers List Container -->
+                  <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="max-height: 200px; overflow-y: auto; border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; background: rgba(255,255,255,0.01);">
+                      <div id="settings-suppliers-list" style="display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Rempli dynamiquement -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div> <!-- Ferme l'élément flex de la colonne de gauche -->
+
+            <!-- Database backup & restores -->
+            <div class="glass-card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;" data-i18n="set_db_mgmt">Sauvegarde de Données</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <button class="btn btn-secondary" style="width: 100%; justify-content: flex-start;" id="db-export-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    <span data-i18n="set_db_export">Exporter la Base de Données</span>
+                  </button>
+
+                  <div style="border-top: 1px solid var(--glass-border); padding-top: 16px; margin-top: 8px;">
+                    <label class="btn btn-secondary" style="width: 100%; justify-content: flex-start; cursor: pointer;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                      <span data-i18n="set_db_import">Importer une Sauvegarde</span>
+                      <input type="file" id="db-import-file-input" style="display: none;" accept=".json">
+                    </label>
+                    <p style="font-size: 0.75rem; color: var(--danger); margin-top: 8px; line-height: 1.3;" data-i18n="set_db_import_warning">Attention : L'importation écrasera toutes vos données actuelles !</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- ----------------- MODALS ----------------- -->
+
+    <!-- CLIENT MODAL -->
+    <div class="modal-overlay" id="client-modal">
+      <div class="glass-card modal-content">
+        <div class="modal-header">
+          <h3 id="client-modal-title" style="font-size: 1.2rem; font-weight: 800;" data-i18n="client_add">Ajouter un Client</h3>
+          <button class="btn btn-secondary btn-icon-only modal-close-btn" style="border-radius: 50%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          </button>
+        </div>
+        <form id="client-form" style="display: flex; flex-direction: column; gap: 16px;">
+          <input type="hidden" id="client-id-field">
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="client-surname-input" data-i18n="client_surname">Prénom</label>
+              <input type="text" class="glass-input" id="client-surname-input" required>
+            </div>
+            <div class="form-group">
+              <label for="client-name-input" data-i18n="client_name">Nom</label>
+              <input type="text" class="glass-input" id="client-name-input" required>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="client-cin-input" data-i18n="client_cin">Numéro CIN</label>
+              <input type="text" class="glass-input" id="client-cin-input" required pattern="[0-9]{8}" title="CIN doit contenir 8 chiffres">
+            </div>
+            <div class="form-group">
+              <label for="client-phone-input" data-i18n="client_phone">Numéro de téléphone</label>
+              <input type="text" class="glass-input" id="client-phone-input" required>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px;">
+            <button type="button" class="btn btn-secondary modal-close-btn" data-i18n="g_cancel">Annuler</button>
+            <button type="submit" class="btn btn-primary" data-i18n="g_save">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- PRODUCT MODAL -->
+    <div class="modal-overlay" id="product-modal">
+      <div class="glass-card modal-content" style="max-width: 650px;">
+        <div class="modal-header">
+          <h3 id="product-modal-title" style="font-size: 1.2rem; font-weight: 800;" data-i18n="prod_add">Ajouter un Produit</h3>
+          <button class="btn btn-secondary btn-icon-only modal-close-btn" style="border-radius: 50%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          </button>
+        </div>
+        <form id="product-form" style="display: flex; flex-direction: column; gap: 16px;">
+          <input type="hidden" id="product-id-field">
+
+          <div class="form-group">
+            <label for="prod-title-input" data-i18n="prod_name">Titre du Produit</label>
+            <input type="text" class="glass-input" id="prod-title-input" required>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="prod-brand-input" data-i18n="prod_brand">Marque</label>
+              <input type="text" class="glass-input" id="prod-brand-input" list="brand-suggestions" required>
+              <datalist id="brand-suggestions"></datalist>
+            </div>
+            <div class="form-group">
+              <label for="prod-supplier-input" data-i18n="prod_supplier">Fournisseur</label>
+              <input type="text" class="glass-input" id="prod-supplier-input" list="supplier-suggestions" required>
+              <datalist id="supplier-suggestions"></datalist>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="prod-sn-input" data-i18n="prod_sn">Numéro de Série (S/N)</label>
+              <input type="text" class="glass-input" id="prod-sn-input" required>
+            </div>
+            <div class="form-group">
+              <label for="prod-tva-input" data-i18n="prod_tva">Taux TVA (%)</label>
+              <input type="number" step="0.01" class="glass-input" id="prod-tva-input" required value="7">
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="prod-price-factory-input" data-i18n="prod_price_factory">Prix d'Achat HT (TND)</label>
+              <input type="number" step="0.001" class="glass-input" id="prod-price-factory-input" required>
+            </div>
+            <div class="form-group">
+              <label for="prod-price-sale-input" data-i18n="prod_price_sale">Prix de Vente HT (TND)</label>
+              <input type="number" step="0.001" class="glass-input" id="prod-price-sale-input" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-desc-input" data-i18n="prod_desc">Description</label>
+            <textarea class="glass-textarea" id="prod-desc-input"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-pic-input" data-i18n="prod_picture">Image du produit</label>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <label class="btn btn-secondary" style="margin: 0; cursor: pointer; flex-shrink: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <span data-i18n="g_logo_placeholder">Choisir image</span>
+                <input type="file" id="prod-pic-input" accept="image/*" style="display: none;">
+              </label>
+              <!-- Preview -->
+              <div id="prod-pic-preview-container" style="width: 50px; height: 50px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <svg id="prod-pic-placeholder-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <img id="prod-pic-preview-img" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+              </div>
+              <button type="button" class="btn btn-danger btn-icon-only" id="prod-pic-remove-btn" style="display: none; padding: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px;">
+            <button type="button" class="btn btn-secondary modal-close-btn" data-i18n="g_cancel">Annuler</button>
+            <button type="submit" class="btn btn-primary" data-i18n="g_save">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MANUAL CAISSE TRANSACTION MODAL -->
+    <div class="modal-overlay" id="caisse-modal">
+      <div class="glass-card modal-content">
+        <div class="modal-header">
+          <h3 id="caisse-modal-title" style="font-size: 1.2rem; font-weight: 800;">Entrée/Sortie Caisse</h3>
+          <button class="btn btn-secondary btn-icon-only modal-close-btn" style="border-radius: 50%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          </button>
+        </div>
+        <form id="caisse-form" style="display: flex; flex-direction: column; gap: 16px;">
+          <input type="hidden" id="caisse-trans-type"> <!-- 'cash_in' or 'cash_out' -->
+          
+          <div class="form-group">
+            <label for="caisse-amount-input" data-i18n="casa_amount">Montant (TND)</label>
+            <input type="number" step="0.001" class="glass-input" id="caisse-amount-input" min="0.001" required>
+          </div>
+
+          <div class="form-group">
+            <label for="caisse-reason-input" data-i18n="casa_reason">Raison / Description</label>
+            <input type="text" class="glass-input" id="caisse-reason-input" required placeholder="Ex: Achat fournitures de bureau">
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px;">
+            <button type="button" class="btn btn-secondary modal-close-btn" data-i18n="g_cancel">Annuler</button>
+            <button type="submit" class="btn btn-primary" data-i18n="g_save">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <div id="invoice-print-layout">
+      <!-- Header -->
+      <div class="p-header">
+        <div class="p-boutique-info">
+          <div class="p-logo-container" style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+            <img src="/infostore.jpeg" alt="Logo" style="height: 60px; object-fit: contain;">
+            <div class="p-logo-placeholder" id="p-store-name" style="margin-bottom: 0;">Info Store</div>
+          </div>
+          <div class="p-info-text" id="p-store-address">Avenue du 3 Aout 1903, Mohamed Maarouf, Sousse 4000, Tunisie</div>
+          <div class="p-info-text" id="p-store-phone">Tél : +216 24 563 441</div>
+        </div>
+        <div class="p-invoice-meta">
+          <div class="p-title" id="p-inv-title">FACTURE</div>
+          <div class="p-meta-item"><strong id="p-inv-num-label">Facture N° :</strong> <span id="p-inv-number">FAC-20260519-001</span></div>
+          <div class="p-meta-item"><strong id="p-inv-date-label">Date/Heure :</strong> <span id="p-inv-date">19/05/2026 14:30</span></div>
+        </div>
+      </div>
+
+      <!-- Client Details -->
+      <div class="p-client-block">
+        <div class="p-client-title" id="p-inv-client-label">DÉTAILS DU CLIENT</div>
+        <div class="p-client-details">
+          <div><strong id="p-cli-name-label">Client :</strong> <span id="p-client-name">Ahmed Ben Ali</span></div>
+          <div><strong id="p-cli-phone-label">Téléphone :</strong> <span id="p-client-phone">+216 98 765 432</span></div>
+          <div><strong id="p-cli-cin-label">CIN (ID) :</strong> <span id="p-client-cin">09876543</span></div>
+        </div>
+      </div>
+
+      <!-- Items Table -->
+      <table class="p-table">
+        <thead>
+          <tr>
+            <th style="width: 40%;" id="p-col-item">Description Produit</th>
+            <th style="width: 20%;" id="p-col-sn">Numéro de Série (S/N)</th>
+            <th style="width: 10%; text-align: center;" id="p-col-qty">Qté</th>
+            <th style="width: 15%; text-align: right;" id="p-col-price">P.U HT (TND)</th>
+            <th style="width: 15%; text-align: right;" id="p-col-tva">TVA (%)</th>
+          </tr>
+        </thead>
+        <tbody id="p-invoice-items">
+          <!-- Dynamic A4 rows -->
+        </tbody>
+      </table>
+
+      <!-- Calculations Summary & Signatures -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <!-- Gauche (Note supprimee) -->
+        <div style="max-width: 50%;"></div>
+
+        <!-- Totals Table -->
+        <div class="p-totals-container" style="margin-bottom: 0;">
+          <table class="p-totals-table">
+            <tr>
+              <td id="p-total-ht-label">Total Hors Taxes (HT)</td>
+              <td id="p-total-ht-val">0.000 TND</td>
+            </tr>
+            <tr id="p-tva-breakdown-rows">
+              <!-- Dynamically populated per TVA rate -->
+            </tr>
+            <tr>
+              <td id="p-stamp-label">Timbre Fiscal</td>
+              <td id="p-stamp-val-print">1.000 TND</td>
+            </tr>
+            <tr class="p-grand-total">
+              <td id="p-total-ttc-label">Net à Payer (TTC)</td>
+              <td id="p-total-ttc-val">0.000 TND</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Signature Zone -->
+      <div class="p-signature-block" style="justify-content: flex-end;">
+        <div class="p-sig-zone" id="p-sig-boutique">Info Store (Cachet & Signature)</div>
+      </div>
+    </div>
+
+    <!-- App Entry Points -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
